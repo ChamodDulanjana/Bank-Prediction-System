@@ -6,13 +6,13 @@ phases:
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 600627330740.dkr.ecr.us-east-1.amazonaws.com
   build:
     commands:
-      - docker build -t qwe .
-      - docker tag qwe:latest 600627330740.dkr.ecr.us-east-1.amazonaws.com/qwe:latest
+      - docker build -t bank-prediction .
+      - docker tag bank-prediction:latest 600627330740.dkr.ecr.us-east-1.amazonaws.com/bank-prediction:latest
   post_build:
     commands:
-      - docker push 600627330740.dkr.ecr.us-east-1.amazonaws.com/qwe:latest
+      - docker push 600627330740.dkr.ecr.us-east-1.amazonaws.com/bank-prediction:latest
       - echo Writing image definitions file...
-      - printf '[{"name":"qwe","imageUri":"%s"}]' 600627330740.dkr.ecr.us-east-1.amazonaws.com/qwe:latest > imagedefinitions.json
+      - printf '[{"name":"bank-prediction","imageUri":"%s"}]' 600627330740.dkr.ecr.us-east-1.amazonaws.com/bank-prediction:latest > imagedefinitions.json
 artifacts:
   files: 
   - imagedefinitions.json
