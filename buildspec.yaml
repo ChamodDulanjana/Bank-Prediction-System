@@ -6,13 +6,13 @@ phases:
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 600627330740.dkr.ecr.us-east-1.amazonaws.com
   build:
     commands:
-      - docker build -t bps .
-      - docker tag bps:latest 600627330740.dkr.ecr.us-east-1.amazonaws.com/bps:latest
+      - docker build -t qwe .
+      - docker tag qwe:latest 600627330740.dkr.ecr.us-east-1.amazonaws.com/qwe:latest
   post_build:
     commands:
-      - docker push 600627330740.dkr.ecr.us-east-1.amazonaws.com/bps:latest
+      - docker push 600627330740.dkr.ecr.us-east-1.amazonaws.com/qwe:latest
       - echo Writing image definitions file...
-      - printf '[{"name":"bps","imageUri":"%s"}]' 600627330740.dkr.ecr.eu-north-1.amazonaws.com/bps:latest > imagedefinitions.json
+      - printf '[{"name":"qwe","imageUri":"%s"}]' 600627330740.dkr.ecr.us-east-1.amazonaws.com/qwe:latest > imagedefinitions.json
 artifacts:
   files: 
   - imagedefinitions.json
