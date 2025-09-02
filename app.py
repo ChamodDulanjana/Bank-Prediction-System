@@ -61,7 +61,7 @@ def predict():
         manual_transformed = preprocessor.transform(input_df)
         prediction = lr_model.predict(manual_transformed)
         
-        return jsonify({"Subscribed": prediction[0]})
+        return jsonify(prediction[0])
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500
